@@ -1,0 +1,9 @@
+streamlit
+sys
+scipy
+numpy
+matplotlib
+pandas
+scikit-learn
+pickle
+google-generativeai

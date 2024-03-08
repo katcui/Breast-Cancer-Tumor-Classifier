@@ -21,39 +21,38 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import SVC
 
 # Load dataset
-target = ['diagnosis',	'radius_mean', 'texture_mean', 'perimeter_mean', 'area_mean'] # 'smoothness_mean', 'compactness_mean', 'concavity_mean', 'concave points_mean', 'symmetry_mean', 'fractal_dimension_mean', 'radius_se', 'texture_se', 'perimeter_se', 'area_se', 'smoothness_se', 'compactness_se', 'concavity_se', 'concave points_se', 'symmetry_se', 'fractal_dimension_se', 'radius_worst', 'texture_worst', 'perimeter_worst', 'area_worst', 'smoothness_worst', 'compactness_worst', 'concavity_worst', 'concave points_worst', 'symmetry_worst','fractal_dimension_worst'
+target = ['diagnosis',	'radius_mean', 'texture_mean', 'perimeter_mean', 'area_mean']
 df = pd.read_csv("data.csv")
 
 target_columns = df[target]
-# print(target_columns)
 
 sns.pairplot(target_columns, hue='diagnosis')
 plt.show()
 
-# # Dimensions of Dataset
-# # shape
-# print(target_columns.shape) # (569, 5)
+# Dimensions of Dataset
+# shape
+print(target_columns.shape) # (569, 5)
 
-# # head
-# print(target_columns.head(20)) # first 20 rows of data
+# head
+print(target_columns.head(20)) # first 20 rows of data
 
-# # Statistical Summary
-# print(target_columns.describe()) 
+# Statistical Summary
+print(target_columns.describe()) 
 
-# # class distribution
-# print(target_columns.groupby('diagnosis').size()) # 357 benign, 212 malignant
+# class distribution
+print(target_columns.groupby('diagnosis').size()) # 357 benign, 212 malignant
 
 # Data Visualization
 
 # box and whisker plots
-# target_columns.plot(kind='box', subplots=True, layout=(2,2), sharex=False, sharey=False)
-# plt.show()
+target_columns.plot(kind='box', subplots=True, layout=(2,2), sharex=False, sharey=False)
+plt.show()
 # histograms
-# target_columns.hist()
-# plt.show()
+target_columns.hist()
+plt.show()
 # scatter plot matrix
-# scatter_matrix(target_columns)
-# plt.show()
+scatter_matrix(target_columns)
+plt.show()
 
 # Split-out validation dataset
 array = target_columns.values
@@ -80,13 +79,13 @@ for name, model in models:
 	names.append(name)
 	print('%s: %f (%f)' % (name, cv_results.mean(), cv_results.std()))
 	
-# # Compare Algorithms
-# plt.boxplot(results, labels=names)
-# plt.title('Algorithm Comparison')
-# plt.show()
+# Compare Algorithms
+plt.boxplot(results, labels=names)
+plt.title('Algorithm Comparison')
+plt.show()
 
 # Make predictions on validation dataset
-LR_model = LinearDiscriminantAnalysis()
+LR_model = LogisticRegression()
 LR_model.fit(X_train, Y_train)
 LR_predictions = LR_model.predict(X_validation)
 
