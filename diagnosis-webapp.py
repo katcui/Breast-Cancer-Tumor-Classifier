@@ -1,6 +1,5 @@
 import streamlit as st # streamlit run ./diagnosis-webapp.py
 import pickle
-import sklearn
 
 LR_model = pickle.load(open('LR_model.pkl','rb'))
 LDA_model = pickle.load(open('LDA_model.pkl','rb'))
