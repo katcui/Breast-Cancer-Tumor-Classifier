@@ -13,7 +13,7 @@ def classify(tumor):
     
 
 def main():
-    st.title("Breat Cancer Tumor Identification")
+    st.title("Breast Cancer Tumor Identification")
 
     activities = ['Logistic Regression','Linear Discriminant Analysis']
 
